@@ -12,7 +12,7 @@ This plugin will add a button that allows users to scroll smoothly to the top of
 Scroll Back to Top is a Wordpress plugin to add a button that appears only when users scroll down the page allowing them to scroll to the top of the page.  The plugin comes pre-configured and is fully functional on activation.  The plugin offers a number of webmaster-friendly features to completely customize the look, position, and animation.  In addition, there is a setting to allow you to put the button in preview mode so it only appears when logged in, which is great for configuration, then fully enable it for everyone to see!  This button is built on jQuery and is designed to be dead easy, without the need to modify any markup or the theme.
 
 = Usage =
-This was built for anyone to use, with no knowledge of HTL or CSS required!
+This was built for anyone to use, with no knowledge of HTML or CSS required!
 
 * Install the plugin through the Plugins interface or by uploading the `scroll-back-to-top` directory to your `/wp-content/plugins/` directory.
 * Activate the Scroll Back to Top plugin.
