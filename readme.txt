@@ -72,4 +72,3 @@ Make sure you get the latest version.
 
 Available in English
 Want to contribute with a translation to your language? Please contact me at joe@josephmsexton.com
-http://www.josephmsexton.com
