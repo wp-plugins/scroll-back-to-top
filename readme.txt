@@ -36,8 +36,8 @@ More support can be found at <a target="_blank" href="http://www.webtipblog.com/
 
 Optional Customization Steps
 
-4. A new setting page will be located within Settings > Scroll Back to Top, navigate to that page to for customization options.
-5. Change enabled status, size, color, opacity, location, icon/text, or fades.
+* A new setting page will be located within Settings > Scroll Back to Top, navigate to that page to for customization options.
+* Change enabled status, size, color, opacity, location, icon/text, or fades.
 
 == Screenshots ==
 
