@@ -35,6 +35,7 @@ More support can be found at <a target="_blank" href="http://www.webtipblog.com/
 3. You're done, the scroll back to top button should appear on all pages after you scroll down a little bit.  If you'd like to customize the design you may continue.
 
 Optional Customization Steps
+
 4. A new setting page will be located within Settings > Scroll Back to Top, navigate to that page to for customization options.
 5. Change enabled status, size, color, opacity, location, icon/text, or fades.
 
