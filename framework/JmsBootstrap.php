@@ -12,7 +12,10 @@
 if ( !class_exists( 'JmsBootstrap' ) ){
 	class JmsBootstrap {
 
-    const VERSION = 1.2;
+    /**
+     * @var float
+     */
+    protected $version = 1.2;
 
 		/**
 		 * @var string
@@ -177,5 +180,14 @@ if ( !class_exists( 'JmsBootstrap' ) ){
 
 			return null;
 		}
+
+    /**
+     * Get version
+     *
+     * @return float
+     */
+    public function getVersion() {
+      return $this->version;
+    }
 	}
 }

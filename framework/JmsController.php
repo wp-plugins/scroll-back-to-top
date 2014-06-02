@@ -12,7 +12,10 @@
 if ( !class_exists( 'JmsController' ) ){
 	abstract class JmsController {
 
-    const VERSION = 1.2;
+    /**
+     * @var float
+     */
+    protected $version = 1.2;
 
 		/**
 		 * @var string
@@ -419,5 +422,14 @@ if ( !class_exists( 'JmsController' ) ){
 
 			return $this->pluginSlug;
 		}
+
+    /**
+     * Get version
+     *
+     * @return float
+     */
+    public function getVersion() {
+      return $this->version;
+    }
 	}
 }

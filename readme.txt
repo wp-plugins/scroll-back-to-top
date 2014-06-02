@@ -3,7 +3,7 @@ Contributors: joesexton00
 Tags: back to top, jquery, scroll to top, button, scroll, scroll top, scroll back to top, scroll up, widget, icon, scroller, vertical scroller, arrow, link to top, back to top, smooth scroll, top, back
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 This plugin will add a button that allows users to scroll smoothly to the top of the page.
 
@@ -62,6 +62,9 @@ Absolutely not.  This plugin can be configured with no knowledge of HTML or CSS,
 Absolutely not.  This plugin is designed to work immediately upon activation, with a nicely designed scroll back to top button ready to go.
 
 == Change Log ==
+
+= 1.1.1 =
+ - Addresses PHP error in versions of PHP prior to 5.3
 
 = 1.1 =
  - Adds support for an optional display timeout

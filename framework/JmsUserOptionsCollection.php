@@ -11,8 +11,10 @@
 if ( !class_exists( 'JmsPluginUserOptionsCollection' ) ){
 	class JmsUserOptionsCollection {
 
-    const VERSION_KEY = 'version';
-    const VERSION     = 1.3;
+    /**
+     * @var float
+     */
+    protected $version = 1.3;
 
 		/**
 		 * @var string
@@ -209,7 +211,7 @@ if ( !class_exists( 'JmsPluginUserOptionsCollection' ) ){
 
 				$defaults[$fieldKey] = $this->fieldOption( $fieldKey, 'default' );
 			}
-      $defaults[static::VERSION_KEY] = static::VERSION;
+      $defaults['version'] = $this->getVersion();
 
 			return $defaults;
 		}
@@ -249,5 +251,14 @@ if ( !class_exists( 'JmsPluginUserOptionsCollection' ) ){
 
 			return $this->optionMap;
 		}
+
+    /**
+     * Get version
+     *
+     * @return float
+     */
+    public function getVersion() {
+      return $this->version;
+    }
 	}
 }

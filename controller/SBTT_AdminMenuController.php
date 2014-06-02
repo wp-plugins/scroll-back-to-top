@@ -13,7 +13,10 @@
 if ( !class_exists( 'SBTT_AdminMenuController' ) ){
 class SBTT_AdminMenuController extends JmsAdminSettingsPage {
 
-  const VERSION = 1.1;
+  /**
+   * @var float
+   */
+  protected $version = 1.1;
 
 	/**
 	 * register Wordpress actions and filters
@@ -46,11 +49,11 @@ class SBTT_AdminMenuController extends JmsAdminSettingsPage {
 
     // v1.1 adds a few new options to the settings menu, init the default values.
     if (
-      ( isset($wp_option[SBTT_Options::VERSION_KEY] ) && $wp_option[SBTT_Options::VERSION_KEY] < 1.1 ) ||
-      !isset( $wp_option[SBTT_Options::VERSION_KEY] )
+      ( isset($wp_option['version'] ) && $wp_option['version'] < 1.1 ) ||
+      !isset( $wp_option['version'] )
     ) {
 
-      $wp_option[SBTT_Options::VERSION_KEY] = static::VERSION;
+      $wp_option['version'] = $options->getVersion();
 
       if ( !isset( $wp_option['min_resolution'] ) ) {
         $wp_option['min_resolution'] = $defaults['min_resolution'] ?: 0;

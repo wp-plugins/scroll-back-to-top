@@ -10,7 +10,10 @@
 if ( !class_exists( 'SBTT_Options' ) ){
 class SBTT_Options extends JmsUserOptionsCollection {
 
-  const VERSION = 1.1;
+  /**
+   * @var float
+   */
+  protected $version = 1.1;
 
 	/**
 	 * @var string

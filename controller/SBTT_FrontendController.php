@@ -12,7 +12,10 @@
 if ( !class_exists( 'SBTT_FrontEndController' ) ){
 class SBTT_FrontEndController extends JmsController {
 
-  const VERSION = 1.1;
+  /**
+   * @var float
+   */
+  protected $version = 1.1;
 
 	/**
 	 * @var array

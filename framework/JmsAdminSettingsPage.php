@@ -13,7 +13,10 @@
 if ( !class_exists( 'JmsAdminSettingsPage' ) ){
 	abstract class JmsAdminSettingsPage extends JmsController {
 
-    const VERSION = 1.3;
+    /**
+     * @var float
+     */
+    protected $version = 1.3;
 
 		/**
 		 * @var string
