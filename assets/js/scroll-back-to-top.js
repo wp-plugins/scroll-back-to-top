@@ -19,6 +19,15 @@
 				$('.scroll-back-to-top-wrapper').removeClass('show');
 			}
 		});
+
+		if(typeof scrollBackToTop.visibilityDuration !== 'undefined' && scrollBackToTop.visibilityDuration){
+			$(window).on('scroll', function() {
+				clearTimeout($.data(this, 'sbttScrollTimer'));
+				$.data(this, 'sbttScrollTimer', setTimeout(function() {
+					$('.scroll-back-to-top-wrapper').removeClass('show');
+				}, scrollBackToTop.visibilityDuration));
+			});
+		}
 	});
 
 	function scrollToElement(selector, time, verticalOffset) {

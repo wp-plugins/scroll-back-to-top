@@ -5,9 +5,14 @@
  * @author Joe Sexton <joe@josephmsexton.com>
  * @package WordPress
  * @subpackage scroll-back-to-top
+ * @version 1.1
+ * @uses SBTT_Options
+ * @uses JmsController
  */
 if ( !class_exists( 'SBTT_FrontEndController' ) ){
 class SBTT_FrontEndController extends JmsController {
+
+  const VERSION = 1.1;
 
 	/**
 	 * @var array
@@ -55,6 +60,10 @@ class SBTT_FrontEndController extends JmsController {
 			$vars['scrollBackToTop']['fadeDuration'] = $this->args['fade_duration'];
 		}
 
+    if ( isset($this->args['visibility_duration']) ) {
+      $vars['scrollBackToTop']['visibilityDuration'] = $this->args['visibility_duration'];
+    }
+
 		// load textfill js only if using auto font sizing
 		if ( isset($this->args['label_type']) && isset($this->args['font_size']) && $this->args['font_size'] == '0px' ) {
 			$this->enqueueCdnScript('text-fill', 'http://jquery-textfill.github.io/jquery-textfill/jquery.textfill.min.js' );
@@ -78,7 +87,7 @@ class SBTT_FrontEndController extends JmsController {
 
 		// Only need the font pack if using icons, not text
 		if ( isset( $this->args['label_type'] ) && $this->args['label_type'] != 'text' ) {
-			$this->enqueueCdnStyle( 'font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' );
+			$this->enqueueCdnStyle( 'font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css' );
 		}
 	}
 
@@ -126,6 +135,8 @@ class SBTT_FrontEndController extends JmsController {
 	protected function _preprocessArgs() {
 
 		$this->_processFade();
+    $this->_processVisibilityDuration();
+    $this->_processBrowserResolutions();
 		$this->_processHorizontalAlignment();
 		$this->_processVerticalAlignment();
 		$this->_processVerticalAlignment();
@@ -144,6 +155,34 @@ class SBTT_FrontEndController extends JmsController {
 			$this->args['fade_duration'] = number_format( ( $this->args['fade_duration'] ) / 1000, 1 );
 		}
 	}
+
+  /**
+   * Process visibility duration
+   */
+  protected function _processVisibilityDuration(){
+
+    if ( !isset( $this->args['visibility_duration'] ) || $this->args['visibility_duration'] < 1 ) {
+      unset( $this->args['visibility_duration'] );
+    }
+  }
+
+  /**
+   * Process browser resolutions
+   */
+  protected function _processBrowserResolutions(){
+
+    if ( isset( $this->args['min_resolution'] ) && is_int( $this->args['min_resolution'] ) && $this->args['min_resolution'] > 0 ) {
+      $this->args['min_resolution'] = $this->args['min_resolution'] . 'px';
+    } else {
+      unset( $this->args['min_resolution'] );
+    }
+
+    if ( isset( $this->args['max_resolution'] ) && is_int( $this->args['max_resolution'] ) && $this->args['max_resolution'] < 9999 ) {
+      $this->args['max_resolution'] = $this->args['max_resolution'] . 'px';
+    } else {
+      unset( $this->args['max_resolution'] );
+    }
+  }
 
 	/**
 	 * Process horizontal alignment

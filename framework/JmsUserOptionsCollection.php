@@ -6,10 +6,13 @@
  * @author Joe Sexton <joe@josephmsexton.com>
  * @package WordPress
  * @subpackage JMS Plugin Framework
- * @version 1.2
+ * @version 1.3
  */
 if ( !class_exists( 'JmsPluginUserOptionsCollection' ) ){
 	class JmsUserOptionsCollection {
+
+    const VERSION_KEY = 'version';
+    const VERSION     = 1.3;
 
 		/**
 		 * @var string
@@ -206,6 +209,7 @@ if ( !class_exists( 'JmsPluginUserOptionsCollection' ) ){
 
 				$defaults[$fieldKey] = $this->fieldOption( $fieldKey, 'default' );
 			}
+      $defaults[static::VERSION_KEY] = static::VERSION;
 
 			return $defaults;
 		}
@@ -220,6 +224,21 @@ if ( !class_exists( 'JmsPluginUserOptionsCollection' ) ){
 			$defaults = $this->defaultOptions();
 			return update_option( $this->optionsKey, $defaults );
 		}
+
+    /**
+     * init plugin's options if they don't exist
+     *
+     * @return boolean
+     */
+    function initOptions(){
+
+      $defaults = $this->defaultOptions();
+      $options = get_option( $this->optionsKey, NULL );
+      if (empty($options)) {
+        return update_option( $this->optionsKey, $defaults );
+      }
+      return TRUE;
+    }
 
 		/**
 		 * options mapping

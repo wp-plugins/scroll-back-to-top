@@ -6,12 +6,14 @@
  * @author Joe Sexton <joe@josephmsexton.com>
  * @package WordPress
  * @subpackage JMS Plugin Framework
- * @version 1.2
+ * @version 1.3
  * @uses JmsController
  * @uses JmsUserOptionsCollection
  */
 if ( !class_exists( 'JmsAdminSettingsPage' ) ){
 	abstract class JmsAdminSettingsPage extends JmsController {
+
+    const VERSION = 1.3;
 
 		/**
 		 * @var string
@@ -47,6 +49,19 @@ if ( !class_exists( 'JmsAdminSettingsPage' ) ){
 		 * @var string
 		 */
 		protected $manageSettingsCapability = 'manage_options';
+
+    /**
+     * constructor
+     *
+     * @param string $pluginFile
+     * @param string $pluginName
+     */
+    public function __construct( $pluginFile, $pluginName = ''  ) {
+
+      parent::__construct( $pluginFile, $pluginName = ''  );
+
+      add_filter('contextual_help', array( $this, 'contextualHelp' ), 10, 3);
+    }
 
 		/**
 		 * settings page title
@@ -321,11 +336,13 @@ if ( !class_exists( 'JmsAdminSettingsPage' ) ){
 		 */
 		protected function _callAddMenuPageMethod( $menuType ){
 
+      global $my_plugin_hook;
+
 			// add menu page
 			if ( $this->_isValidMenuType( $menuType ) ) {
 
 				$method = $this->_getAddMenuPageMethod( $menuType );
-				$method(
+        $my_plugin_hook = $method(
 					__( $this->settingsPageTitle(), $this->textDomain() ),
 					__( $this->settingsMenuTitle(), $this->textDomain() ),
 					$this->manageSettingsCapability(),
@@ -342,7 +359,7 @@ if ( !class_exists( 'JmsAdminSettingsPage' ) ){
 				// if we actually have a menu position set
 				if ( $this->menuPosition ) {
 
-					$method(
+          $my_plugin_hook = $method(
 						__( $this->settingsPageTitle(), $this->textDomain() ),
 						__( $this->settingsMenuTitle(), $this->textDomain() ),
 						$this->manageSettingsCapability(),
@@ -352,7 +369,7 @@ if ( !class_exists( 'JmsAdminSettingsPage' ) ){
 						$this->menuPosition
 					);
 				} else {
-					$method(
+          $my_plugin_hook = $method(
 						__( $this->settingsPageTitle(), $this->textDomain() ),
 						__( $this->settingsMenuTitle(), $this->textDomain() ),
 						$this->manageSettingsCapability(),
@@ -955,5 +972,33 @@ if ( !class_exists( 'JmsAdminSettingsPage' ) ){
 		{
 			return $this->settingsMenuTitle;
 		}
+
+    /**
+     * Contextual help
+     *
+     * @param string $contextual_help
+     * @param string $screen_id
+     * @param WP_Screen $screen
+     * @return string
+     */
+    public function contextualHelp( $contextual_help, $screen_id, $screen ){
+      global $my_plugin_hook;
+
+      if ($screen_id == $my_plugin_hook) {
+        $contextual_help = $this->_renderContextualHelp($screen);
+      }
+
+      return $contextual_help;
+    }
+
+    /**
+     * Render contextual help menu for an admin page
+     *
+     * @param WP_Screen $screen
+     * @return string
+     */
+    protected function _renderContextualHelp(WP_Screen $screen) {
+      return '';
+    }
 	}
 }

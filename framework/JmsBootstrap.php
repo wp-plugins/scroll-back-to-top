@@ -12,6 +12,8 @@
 if ( !class_exists( 'JmsBootstrap' ) ){
 	class JmsBootstrap {
 
+    const VERSION = 1.2;
+
 		/**
 		 * @var string
 		 */
@@ -67,6 +69,7 @@ if ( !class_exists( 'JmsBootstrap' ) ){
 
 			$this->pluginFile = $pluginFile;
 			$this->pluginName = $pluginName;
+      $this->pluginBase = plugin_basename($pluginFile);
 
 			spl_autoload_register( array( $this, '_autoload' ) );
 

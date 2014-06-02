@@ -2,8 +2,9 @@
 /*
 Plugin Name: Scroll Back to Top
 Description: Adds a scroll to top button
+Plugin URI: http://www.webtipblog.com/scroll-back-top-wordpress-plugin/
 Text Domain: scroll-back-to-top
-Version: 1.0
+Version: 1.1
 Author: Joe Sexton
 Author URI: http://www.josephmsexton.com
 */

@@ -12,6 +12,8 @@
 if ( !class_exists( 'JmsController' ) ){
 	abstract class JmsController {
 
+    const VERSION = 1.2;
+
 		/**
 		 * @var string
 		 */
@@ -78,6 +80,7 @@ if ( !class_exists( 'JmsController' ) ){
 
 			$this->pluginFile = $pluginFile;
 			$this->pluginName = $pluginName;
+      $this->pluginBase = plugin_basename($pluginFile);
 
 			$pathParts        = explode( '/', $pluginFile );
 			$filename         = array_pop( $pathParts );

@@ -1,5 +1,15 @@
-<?php $test = ''; ?>
+
 <style>
+<?php $media_query = false; ?>
+<?php if ( isset( $min_resolution ) || isset( $max_resolution ) ) : ?>
+<?php $media_query = true; ?>
+@media <?php if ( isset( $min_resolution ) ) : ?>(min-width: <?php echo $min_resolution; ?>)
+  <?php if ( isset( $max_resolution ) ) : ?>
+    and
+  <?php endif; ?>
+<?php endif; ?>
+<?php if ( isset( $max_resolution ) ) : ?>(max-width: <?php echo $max_resolution; ?>)<?php endif; ?> {
+<?php endif; ?>
 .scroll-back-to-top-wrapper {
     position: fixed;
 	opacity: 0;
@@ -74,6 +84,9 @@
 <?php if ( isset( $color_hover ) ) : ?>
 	background-color: <?php echo $color_hover; ?>;
 <?php endif; ?>
+<?php if ( isset( $color_foreground_hover ) ) : ?>
+  color: <?php echo $color_foreground_hover; ?>;
+<?php endif; ?>
 }
 .scroll-back-to-top-wrapper.show {
     visibility:visible;
@@ -90,5 +103,8 @@
 }
 <?php if ( isset( $extra_css ) ) : ?>
 <?php echo $extra_css; ?>
+<?php endif; ?>
+<?php if ( $media_query ) : ?>
+}
 <?php endif; ?>
 </style>

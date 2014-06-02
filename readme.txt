@@ -2,8 +2,8 @@
 Contributors: joesexton00
 Tags: back to top, jquery, scroll to top, button, scroll, scroll top, scroll back to top, scroll up, widget, icon, scroller, vertical scroller, arrow, link to top, back to top, smooth scroll, top, back
 Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 1.0
+Tested up to: 3.9
+Stable tag: 1.1
 
 This plugin will add a button that allows users to scroll smoothly to the top of the page.
 
@@ -19,6 +19,7 @@ This was built for anyone to use, with no knowledge of HTML or CSS required!
 * You're done, the scroll back to top button should appear on all pages after you scroll down a little bit.  If you'd like to customize the design you may continue.
 
 Optional Customization Steps
+
 * A new setting page will be located within Settings > Scroll Back to Top, navigate to that page to for customization options.
 * Change enabled status, size, color, opacity, location, icon/text, or fades.
 
@@ -34,8 +35,9 @@ More support can be found at <a target="_blank" href="http://www.webtipblog.com/
 3. You're done, the scroll back to top button should appear on all pages after you scroll down a little bit.  If you'd like to customize the design you may continue.
 
 Optional Customization Steps
-4. A new setting page will be located within Settings > Scroll Back to Top, navigate to that page to for customization options.
-5. Change enabled status, size, color, opacity, location, icon/text, or fades.
+
+* A new setting page will be located within Settings > Scroll Back to Top, navigate to that page to for customization options.
+* Change enabled status, size, color, opacity, location, icon/text, or fades.
 
 == Screenshots ==
 
@@ -60,6 +62,16 @@ Absolutely not.  This plugin can be configured with no knowledge of HTML or CSS,
 Absolutely not.  This plugin is designed to work immediately upon activation, with a nicely designed scroll back to top button ready to go.
 
 == Change Log ==
+
+= 1.1 =
+ - Adds support for an optional display timeout
+ - Adds min/max browser resolutions
+ - Adds foreground hover color
+ - Adds contextual help menu
+ - Adds settings link from plugin page
+ - Updated font-awesome version to v4.1.0
+ - Updated options/settings to persist after deactivating/activating the plugin.
+
 
 = 1.0 =
  - Initial Release

@@ -5,9 +5,12 @@
  * @author Joe Sexton <joe@josephmsexton.com>
  * @package WordPress
  * @subpackage scroll-back-to-top
+ * @version 1.1
  */
 if ( !class_exists( 'SBTT_Options' ) ){
 class SBTT_Options extends JmsUserOptionsCollection {
+
+  const VERSION = 1.1;
 
 	/**
 	 * @var string
@@ -40,6 +43,26 @@ class SBTT_Options extends JmsUserOptionsCollection {
 					),
 					'required'  => true,
 				),
+        'min_resolution' => array(
+          'label'     => __( 'Minimum Browser Resolution', 'scroll-back-to-top' ),
+          'type'      => 'text',
+          'default'   => 0,
+          'min'       => 0,
+          'max'       => 9999,
+          'units'     => __( 'px - smallest browser resolution the scroll button should appear on', 'scroll-back-to-top' ),
+          'data_type' => 'integer',
+          'required'  => true,
+        ),
+        'max_resolution' => array(
+          'label'     => __( 'Maximum Browser Resolution', 'scroll-back-to-top' ),
+          'type'      => 'text',
+          'default'   => 9999,
+          'min'       => 0,
+          'max'       => 9999,
+          'units'     => __( 'px - largest browser resolution the scroll button should appear on', 'scroll-back-to-top' ),
+          'data_type' => 'integer',
+          'required'  => true,
+        ),
 			),
 		);
 		$this->optionMap['appearance'] = array(
@@ -75,7 +98,7 @@ class SBTT_Options extends JmsUserOptionsCollection {
 					'required'  => true,
 				),
 				'color_hover' => array(
-					'label'     => __( 'Hover Color', 'scroll-back-to-top' ),
+					'label'     => __( 'Background Hover Color', 'scroll-back-to-top' ),
 					'type'      => 'text',
 					'default'   => '#888888',
 					'options'   => 'color-picker',
@@ -90,6 +113,14 @@ class SBTT_Options extends JmsUserOptionsCollection {
 					'data_type' => 'string',
 					'required'  => true,
 				),
+        'color_foreground_hover' => array(
+          'label'     => __( 'Foreground Hover Color', 'scroll-back-to-top' ),
+          'type'      => 'text',
+          'default'   => '#eeeeee',
+          'options'   => 'color-picker',
+          'data_type' => 'string',
+          'required'  => true,
+        ),
 				'opacity' => array(
 					'label'     => __( 'Opacity', 'scroll-back-to-top' ),
 					'type'      => 'text',
@@ -227,17 +258,28 @@ class SBTT_Options extends JmsUserOptionsCollection {
 					'default'   => 500,
 					'min'       => 0,
 					'max'       => 5000,
-					'units'     => __( 'ms', 'scroll-back-to-top' ),
+					'units'     => __( 'ms - this is how long it takes to scroll back to the top after the button has been pressed', 'scroll-back-to-top' ),
 					'data_type' => 'integer',
 					'required'  => true,
 				),
+        'visibility_duration' => array(
+          'label'     => __( 'Visibility Duration', 'scroll-back-to-top' ),
+          'type'      => 'text',
+          'default'   => 0,
+          'min'       => 0,
+          'max'       => 10000,
+          'units'     => __( 'ms - if set to 0 the button will never time out,
+                              otherwise the button will disappear after the specified time', 'scroll-back-to-top' ),
+          'data_type' => 'integer',
+          'required'  => true,
+        ),
 				'fade_duration' => array(
 					'label'     => __( 'Fade Duration', 'scroll-back-to-top' ),
 					'type'      => 'text',
 					'default'   => 500,
 					'min'       => 0,
 					'max'       => 5000,
-					'units'     => __( 'ms', 'scroll-back-to-top' ),
+					'units'     => __( 'ms - this is how long it takes for the transition to fade the button in and out', 'scroll-back-to-top' ),
 					'data_type' => 'integer',
 					'required'  => true,
 				),
