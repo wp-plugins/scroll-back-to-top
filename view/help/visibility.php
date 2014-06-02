@@ -13,5 +13,5 @@ This setting is the minimum browser resolution to display the button.  To restri
 appearing in smaller browsers, increase the value of this from 0 pixels to a higher value.
 
 <h3>Maximum Browser Resolution</h3>
-This setting is the axnimum browser resolution to display the button.  To restrict the button from
+This setting is the maximum browser resolution to display the button.  To restrict the button from
 appearing in larger browsers, decrease the value of this from 9999 pixels to a lower value.
