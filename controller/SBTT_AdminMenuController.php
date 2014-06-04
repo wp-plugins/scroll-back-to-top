@@ -56,18 +56,18 @@ class SBTT_AdminMenuController extends JmsAdminSettingsPage {
       $wp_option['version'] = $options->getVersion();
 
       if ( !isset( $wp_option['min_resolution'] ) ) {
-        $wp_option['min_resolution'] = $defaults['min_resolution'] ?: 0;
+        $wp_option['min_resolution'] = isset( $defaults['min_resolution'] ) ? $defaults['min_resolution'] : 0;
       }
       if ( !isset( $wp_option['max_resolution'] ) ) {
-        $wp_option['max_resolution'] = $defaults['max_resolution'] ?: 9999;
+        $wp_option['max_resolution'] = isset( $defaults['max_resolution'] ) ? $defaults['max_resolution'] : 9999;
       }
       if ( !isset( $wp_option['visibility_duration'] ) ) {
-        $wp_option['visibility_duration'] = $defaults['visibility_duration'] ?: 0;
+        $wp_option['visibility_duration'] = isset( $defaults['visibility_duration'] ) ? $defaults['visibility_duration'] : 0;
       }
       if ( !isset( $wp_option['color_foreground_hover'] ) && isset( $wp_option['color_foreground'] ) ) {
         $wp_option['color_foreground_hover'] = $wp_option['color_foreground'];
       } elseif ( !isset( $wp_option['color_foreground_hover'] ) ) {
-        $wp_option['color_foreground_hover'] = $defaults['color_foreground_hover'] ?: '#eeeeee';
+        $wp_option['color_foreground_hover'] = isset( $defaults['color_foreground_hover'] ) ? $defaults['color_foreground_hover'] : '#eeeeee';
       }
 
       update_option($key, $wp_option);
